@@ -1,7 +1,5 @@
 package com.smelk.stackpractice;
 
-import com.smelk.OutOfScopeException;
-
 public class MyStack<T> {
     private NodeStack<T> top;
     private int size;

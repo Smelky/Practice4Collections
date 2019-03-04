@@ -1,77 +1,66 @@
 package com.smelk.linkedlistpractice;
 
-import com.smelk.OutOfScopeException;
-
 public class MyLinkedList<T> {
     private int size;
-    private Node<T> first;
+    private Node first;
     private Node last;
 
     public MyLinkedList() {
-        first = new Node<>(null, null, null);
+        first = new Node();
         last = first;
         size = 0;
     }
 
-    public void add(T item) {
-        Node<T> newNode = new Node<>(last, item, null);
-        if (size == 0) {
-            first = newNode;
+    public T get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException();
         }
+        Node head = first;
+        while (index > 0) {
+            head = head.next;
+            index--;
+        }
+        return head.value;
+    }
 
-        last.next = newNode;
-        last.prev = last;
-        last = newNode;
+    public void add(T t) {
+        if (size == 0) {
+            first.value = t;
+            last = first;
+        } else {
+            Node newNode = new Node();
+            newNode.value = t;
+            newNode.prev = last;
+            last.next = newNode;
+            last = newNode;
+        }
         size++;
     }
 
-    public void remove(int i) throws OutOfScopeException {
-        Node<T> x = getNode(i);
-        if (x != null) {
-            remove(x);
-        }
-    }
-
-    private void remove(Node<T> node) {
-        Node<T> prev = node.prev;
-        Node<T> next = node.next;
-        if (prev == null) {
-            first = node.next;
-        } else if (next == null) {
-            last = node.prev;
-        } else {
-            prev.next = next;
-            next.prev = prev;
-            node.next = null;
-            node.prev = null;
-        }
-        node.data = null;
-        size--;
-
-    }
-
-    private Node<T> getNode(int index) throws OutOfScopeException {
-        if (index < 0 || index >= size) {
-            throw new OutOfScopeException("Index is out of scope!");
-        } else if (index < size / 2) {
-            Node<T> item = first;
-            for (int i = 0; i < index; i++) {
-                item = item.next;
+    public void remove(int i) {
+        if (i >= 0 && i < size) {
+            Node head = first;
+            while (i > 0) {
+                head = head.next;
+                i--;
             }
-            return item;
-        } else {
-            Node<T> item = last;
-            for (int i = size - 1; i > index; i--) {
-                item = item.prev;
+            if (head.prev == null) {
+                first = first.next;
+                if (first != null) {
+                    first.prev = null;
+                }
+            } else {
+                head.prev.next = head.next;
             }
-            return item;
-        }
-    }
-
-
-    public void clear() throws OutOfScopeException {
-        for (int i = 0; i <= size; i++) {
-            remove(0);
+            if (head.next == null) {
+                last = last.prev;
+                if (last != null) {
+                    last.next = null;
+                }
+            } else {
+                head.next.prev = head.prev;
+            }
+            size--;
         }
     }
 
@@ -79,7 +68,15 @@ public class MyLinkedList<T> {
         return size;
     }
 
-    public T get(int i) throws OutOfScopeException {
-        return getNode(i).data;
+    public void clear() {
+        for (int i = 0; i <= size; i++) {
+            remove(0);
+        }
+    }
+
+    private class Node {
+        T value;
+        Node next;
+        Node prev;
     }
 }

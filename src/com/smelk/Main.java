@@ -3,6 +3,7 @@ package com.smelk;
 import com.smelk.arraylistpractice.MyArrayList;
 import com.smelk.linkedlistpractice.MyLinkedList;
 import com.smelk.stackpractice.MyStack;
+import com.smelk.stackpractice.OutOfScopeException;
 
 public class Main {
 
@@ -18,7 +19,7 @@ public class Main {
         System.out.println("Getting item with index 1 after remove previous item with index 1: " + myArrayList.get(1));
         System.out.println("Size after removing one element: " + myArrayList.size());
         myArrayList.clear();
-        System.out.println("Size after clear method: " + myArrayList.size());
+        System.out.println("Size after clear method: " + myArrayList.size() + "\n");
 
         MyLinkedList myLinkedList = new MyLinkedList();
         System.out.println("Size after creation: " + myLinkedList.size());
@@ -31,7 +32,7 @@ public class Main {
         System.out.println("Getting item with index 1 after remove previous item with index 1: " + myLinkedList.get(1));
         System.out.println("Size after removing one element: " + myLinkedList.size());
         myLinkedList.clear();
-        System.out.println("Size after clear method: " + myLinkedList.size());
+        System.out.println("Size after clear meth~od: " + myLinkedList.size() + "\n");
 
         MyStack myStack = new MyStack();
         System.out.println("Size after creation: " + myStack.size());

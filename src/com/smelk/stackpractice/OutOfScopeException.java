@@ -1,4 +1,4 @@
-package com.smelk;
+package com.smelk.stackpractice;
 
 public class OutOfScopeException extends Exception {
 
