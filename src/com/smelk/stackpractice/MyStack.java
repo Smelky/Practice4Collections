@@ -1,5 +1,7 @@
 package com.smelk.stackpractice;
 
+import com.smelk.OutOfScopeException;
+
 public class MyStack<T> {
     private NodeStack<T> top;
     private int size;
@@ -43,13 +45,13 @@ public class MyStack<T> {
         }
     }
 
-    public void remove(int index) {
+    public void remove(int index) throws OutOfScopeException {
         if (stackIsEmpty()) {
             System.out.println("Stack is empty!");
             return;
         }
         if (index >= size || index < 0) {
-            throw new NullPointerException("Bad idea!");
+            throw new OutOfScopeException("Index is out of scope!");
         }
         if (index == 0) {
             pop();

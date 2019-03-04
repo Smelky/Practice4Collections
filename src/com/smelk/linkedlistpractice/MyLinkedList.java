@@ -1,5 +1,7 @@
 package com.smelk.linkedlistpractice;
 
+import com.smelk.OutOfScopeException;
+
 public class MyLinkedList<T> {
     private int size;
     private Node<T> first;
@@ -16,13 +18,14 @@ public class MyLinkedList<T> {
         if (size == 0) {
             first = newNode;
         }
+
         last.next = newNode;
+        last.prev = last;
         last = newNode;
         size++;
     }
 
-
-    public void remove(int i) {
+    public void remove(int i) throws OutOfScopeException {
         Node<T> x = getNode(i);
         if (x != null) {
             remove(x);
@@ -47,9 +50,9 @@ public class MyLinkedList<T> {
 
     }
 
-    private Node<T> getNode(int index) {
+    private Node<T> getNode(int index) throws OutOfScopeException {
         if (index < 0 || index >= size) {
-           throw new NullPointerException("Bad idea!");
+            throw new OutOfScopeException("Index is out of scope!");
         } else if (index < size / 2) {
             Node<T> item = first;
             for (int i = 0; i < index; i++) {
@@ -66,8 +69,8 @@ public class MyLinkedList<T> {
     }
 
 
-    public void clear() {
-        for (int i = 0; i < size; i++) {
+    public void clear() throws OutOfScopeException {
+        for (int i = 0; i <= size; i++) {
             remove(0);
         }
     }
@@ -76,7 +79,7 @@ public class MyLinkedList<T> {
         return size;
     }
 
-    public T get(int i) {
+    public T get(int i) throws OutOfScopeException {
         return getNode(i).data;
     }
 }
