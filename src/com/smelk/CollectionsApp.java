@@ -5,7 +5,7 @@ import com.smelk.linkedlistpractice.MyLinkedList;
 import com.smelk.stackpractice.MyStack;
 import com.smelk.stackpractice.OutOfScopeException;
 
-public class Main {
+public class CollectionsApp {
 
     public static void main(String[] args) {
         MyArrayList myArrayList = new MyArrayList();

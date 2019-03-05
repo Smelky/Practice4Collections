@@ -1,6 +1,8 @@
 package com.smelk.linkedlistpractice;
 
-public class MyLinkedList<T> {
+import com.smelk.List;
+
+public class MyLinkedList<T> implements List<T> {
     private int size;
     private Node first;
     private Node last;

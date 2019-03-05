@@ -1,6 +1,8 @@
 package com.smelk.arraylistpractice;
 
-public class MyArrayList<T> {
+import com.smelk.List;
+
+public class MyArrayList<T> implements List<T> {
     private final int INIT_SIZE = 16;
     private final int CUT_RATE = 4;
     private Object[] array = new Object[INIT_SIZE];

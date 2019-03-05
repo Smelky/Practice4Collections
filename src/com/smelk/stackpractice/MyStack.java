@@ -1,6 +1,6 @@
 package com.smelk.stackpractice;
 
-public class MyStack<T> {
+public class MyStack<T> implements StackList<T>{
     private NodeStack<T> top;
     private int size;
 
