@@ -13,6 +13,7 @@ public class MyLinkedList<T> implements List<T> {
         size = 0;
     }
 
+    @Override
     public T get(int index) {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException();
@@ -25,6 +26,7 @@ public class MyLinkedList<T> implements List<T> {
         return head.value;
     }
 
+    @Override
     public void add(T t) {
         if (size == 0) {
             first.value = t;
@@ -39,6 +41,7 @@ public class MyLinkedList<T> implements List<T> {
         size++;
     }
 
+    @Override
     public void remove(int i) {
         if (i >= 0 && i < size) {
             Node head = first;
@@ -66,10 +69,12 @@ public class MyLinkedList<T> implements List<T> {
         }
     }
 
+    @Override
     public int size() {
         return size;
     }
 
+    @Override
     public void clear() {
         for (int i = 0; i <= size; i++) {
             remove(0);

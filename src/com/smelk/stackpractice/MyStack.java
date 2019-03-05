@@ -1,6 +1,6 @@
 package com.smelk.stackpractice;
 
-public class MyStack<T> implements StackList<T>{
+public class MyStack<T> implements StackList<T> {
     private NodeStack<T> top;
     private int size;
 
@@ -9,12 +9,14 @@ public class MyStack<T> implements StackList<T>{
         size = 0;
     }
 
+    @Override
     public void push(T item) {
         NodeStack<T> node = new NodeStack<>(item, top);
         top = node;
         size++;
     }
 
+    @Override
     public T pop() {
         if (stackIsEmpty()) {
             throw new StackIsEmptyException("Stack is empty!");
@@ -25,6 +27,7 @@ public class MyStack<T> implements StackList<T>{
         return temp.data;
     }
 
+    @Override
     public T peek() {
         if (stackIsEmpty()) {
             throw new StackIsEmptyException("Stack is empty!");
@@ -32,10 +35,12 @@ public class MyStack<T> implements StackList<T>{
         return top.data;
     }
 
+    @Override
     public int size() {
         return size;
     }
 
+    @Override
     public void clear() {
         int oldSize = size;
         for (int i = 0; i < oldSize; i++) {
@@ -43,6 +48,7 @@ public class MyStack<T> implements StackList<T>{
         }
     }
 
+    @Override
     public void remove(int index) {
         if (stackIsEmpty()) {
             throw new StackIsEmptyException("Stack is empty!");

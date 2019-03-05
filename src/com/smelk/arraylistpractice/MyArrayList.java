@@ -8,6 +8,7 @@ public class MyArrayList<T> implements List<T> {
     private Object[] array = new Object[INIT_SIZE];
     private int size = 0;
 
+    @Override
     public void add(T item) {
         if (size == array.length - 1) {
             resize(array.length * 2);
@@ -16,10 +17,12 @@ public class MyArrayList<T> implements List<T> {
         }
     }
 
+    @Override
     public T get(int index) {
         return (T) array[index];
     }
 
+    @Override
     public void remove(int index) {
         for (int i = index; i < size; i++) {
             array[i] = array[i + 1];
@@ -30,10 +33,12 @@ public class MyArrayList<T> implements List<T> {
             resize(array.length / 2);
     }
 
+    @Override
     public int size() {
         return size;
     }
 
+    @Override
     public void clear() {
         array = new Object[INIT_SIZE];
         size = 0;
