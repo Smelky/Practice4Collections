@@ -17,7 +17,7 @@ public class MyStack<T> {
 
     public T pop() {
         if (stackIsEmpty()) {
-            System.out.println("Stack is empty!");
+            throw new StackIsEmptyException("Stack is empty!");
         }
         NodeStack<T> temp = top;
         top = top.next;
@@ -27,7 +27,7 @@ public class MyStack<T> {
 
     public T peek() {
         if (stackIsEmpty()) {
-            System.out.println("Stack is empty!");
+            throw new StackIsEmptyException("Stack is empty!");
         }
         return top.data;
     }
@@ -43,10 +43,9 @@ public class MyStack<T> {
         }
     }
 
-    public void remove(int index) throws OutOfScopeException {
+    public void remove(int index) {
         if (stackIsEmpty()) {
-            System.out.println("Stack is empty!");
-            return;
+            throw new StackIsEmptyException("Stack is empty!");
         }
         if (index >= size || index < 0) {
             throw new OutOfScopeException("Index is out of scope!");

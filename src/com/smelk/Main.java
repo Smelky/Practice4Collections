@@ -7,7 +7,7 @@ import com.smelk.stackpractice.OutOfScopeException;
 
 public class Main {
 
-    public static void main(String[] args) throws OutOfScopeException {
+    public static void main(String[] args) {
         MyArrayList myArrayList = new MyArrayList();
         System.out.println("Size after creation: " + myArrayList.size());
         myArrayList.add(1);
