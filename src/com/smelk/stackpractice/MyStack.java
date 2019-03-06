@@ -11,7 +11,7 @@ public class MyStack<T> implements StackList<T> {
 
     @Override
     public void push(T item) {
-        NodeStack<T> node = new NodeStack<>(item, top);
+        NodeStack<T> node = new NodeStack<T>(top, item);
         top = node;
         size++;
     }
@@ -22,9 +22,9 @@ public class MyStack<T> implements StackList<T> {
             throw new StackIsEmptyException("Stack is empty!");
         }
         NodeStack<T> temp = top;
-        top = top.next;
+        top = top.getNext();
         size--;
-        return temp.data;
+        return temp.getData();
     }
 
     @Override
@@ -32,7 +32,7 @@ public class MyStack<T> implements StackList<T> {
         if (stackIsEmpty()) {
             throw new StackIsEmptyException("Stack is empty!");
         }
-        return top.data;
+        return top.getData();
     }
 
     @Override
@@ -61,18 +61,18 @@ public class MyStack<T> implements StackList<T> {
         } else {
             NodeStack<T> prev = top;
             for (int i = 0; i < index - 1; i++) {
-                prev = prev.next;
+                prev = prev.getNext();
             }
             remove(prev);
         }
     }
 
     private void remove(NodeStack<T> prev) {
-        NodeStack<T> node = prev.next;
-        if (node.next == null) {
-            prev.next = null;
+        NodeStack<T> node = prev.getNext();
+        if (node.getNext() == null) {
+            prev.setNext(null);
         } else {
-            prev.next = node.next;
+            prev.setNext(node.getNext());
         }
         size--;
     }
