@@ -4,8 +4,8 @@ import com.smelk.List;
 
 public class MyLinkedList<T> implements List<T> {
     private int size;
-    private Node first;
-    private Node last;
+    private Node<T> first;
+    private Node<T> last;
 
     public MyLinkedList() {
         first = new Node();
@@ -18,7 +18,7 @@ public class MyLinkedList<T> implements List<T> {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException();
         }
-        Node head = first;
+        Node<T> head = first;
         while (index > 0) {
             head = head.next;
             index--;
@@ -81,7 +81,7 @@ public class MyLinkedList<T> implements List<T> {
         }
     }
 
-    private class Node {
+    private static class Node<T> {
         T value;
         Node next;
         Node prev;
