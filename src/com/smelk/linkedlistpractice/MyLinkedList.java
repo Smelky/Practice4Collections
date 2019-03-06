@@ -83,7 +83,7 @@ public class MyLinkedList<T> implements List<T> {
 
     private static class Node<T> {
         T value;
-        Node next;
-        Node prev;
+        Node<T> next;
+        Node<T> prev;
     }
 }
